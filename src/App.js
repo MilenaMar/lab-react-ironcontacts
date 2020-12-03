@@ -26,7 +26,9 @@ byPopularity = ()=> {
   this.setState({contactShow:this.state.contactshow.sort
     ((a,b) => (a.popularity > b.popularity) ? 1 : ((b.popularity > a.popularity) ? -1 : 0))})
 }
-
+deleteContact= (id)=>{
+  this.setState({contactshow:this.state.contactshow.slice().filter(e => e.id !== id)})
+}
  render () {
   return (
     <div className="App">
@@ -46,6 +48,7 @@ byPopularity = ()=> {
      <img src={e.pictureUrl} alt="celebrity"></img>
       <p>{e.name}</p>
       <p>{(e.popularity).toFixed(2)}</p>
+      <button  onClick={() => this.deleteContact(e.id)}> Delete</button>
       </div>)}  
     </div>
   );

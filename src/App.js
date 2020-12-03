@@ -8,26 +8,30 @@ export default class App extends Component  {
   }
 
   getRandom = () => {
+    let myState = this.state.contactshow
     let randomCo = contacts[Math.floor(Math.random() * contacts.length)]
   if (this.state.contactshow.includes(randomCo)){
-    this.setState({contactShow:this.state.contactshow})
+    this.setState({contactShow:myState})
   } else {
-    this.setState({contactShow:this.state.contactshow.push(randomCo)})
+    this.setState({contactShow:myState.push(randomCo)})
   }
   }
 
 byName = ()=> {
-this.setState({contactShow:this.state.contactshow.sort
+  let myState = this.state.contactshow
+this.setState({contactShow:myState.sort
   ((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
 })
 }
 
 byPopularity = ()=> {
-  this.setState({contactShow:this.state.contactshow.sort
+  let myState = this.state.contactshow
+  this.setState({contactShow:myState.sort
     ((a,b) => (a.popularity > b.popularity) ? 1 : ((b.popularity > a.popularity) ? -1 : 0))})
 }
 deleteContact= (id)=>{
-  this.setState({contactshow:this.state.contactshow.slice().filter(e => e.id !== id)})
+  let myState = this.state.contactshow
+  this.setState({contactshow:myState.slice().filter(e => e.id !== id)})
 }
  render () {
   return (
